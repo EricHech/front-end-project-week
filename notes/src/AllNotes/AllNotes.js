@@ -23,14 +23,14 @@ class AllNotes extends Component {
   };
 
   orderByAlphabet = () => {
-    let arr = [];
-    this.props.notes.map(eachNote => {
-      let eachArr = [];
-      eachArr.push(eachNote.title, eachNote.body, eachNote.id);
-      arr.push(eachArr);
+    return this.props.notes.sort((a, b) => {
+      const aye = a.title.toUpperCase();
+      const bee = b.title.toUpperCase();
+
+      if (aye < bee) return -1;
+      if (aye > bee) return 1;
+      return 0;
     });
-    arr.sort();
-    return arr;
   };
 
   orderByTime = () => {
