@@ -79,16 +79,17 @@ class AllNotes extends Component {
               Order By Time Created
             </button>
             <div className="all-notes_notes">
-              {noteList.map((eachNote, i) => {
+            {noteList.map((eachNote, i) => {
+                if (eachNote.body === null) eachNote.body = '';
                 const charsVisible =
-                  eachNote[1].length < 105
-                    ? eachNote[1]
-                    : eachNote[1].slice(0, 105) + ' ...';
+                  eachNote.body.length < 105
+                    ? eachNote.body
+                    : eachNote.body.slice(0, 105) + ' ...';
                 return (
-                  <div className="note-box" key={eachNote[2]}>
-                    <Link to={`/notes/${eachNote[2]}`}>
+                  <div className="note-box" key={eachNote.id}>
+                    <Link to={`/notes/${eachNote.id}`}>
                       <div className="note-title">{`${i + 1}. ${
-                        eachNote[0]
+                        eachNote.title
                       }`}</div>
                       <div className="note-body">{charsVisible}</div>
                     </Link>
